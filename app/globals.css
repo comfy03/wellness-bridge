@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
+/* =========================================================
+   Theme tokens (Headspace-ish: warm neutrals + soft gradients)
+   ========================================================= */
 :root {
+  /* Base */
   --background: #ffffff;
-  --foreground: #171717;
-}
+  --foreground: #484559;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces */
+  --muted: #f2efe9;
+  --muted-foreground: #4e495a;
+
+  --card: rgba(255, 255, 255, 0.75);
+  --border: rgba(20, 19, 26, 0.10);
+
+  /* Accent / focus */
+  --ring: rgba(245, 158, 11, 0.35); /* warm amber */
+
+  /* Radii */
+  --radius-card: 28px;
+
+  /* Shadows */
+  --shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 18px 55px rgba(0, 0, 0, 0.08);
+
+  --shadow-card-hover:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 26px 75px rgba(0, 0, 0, 0.12);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #07070a;
+    --foreground: #f4f4f5;
+
+    --muted: rgba(255, 255, 255, 0.06);
+    --muted-foreground: rgba(244, 244, 245, 0.72);
+
+    --card: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.10);
+
+    --ring: rgba(245, 158, 11, 0.35);
   }
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+html,
+body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: nicer selection */
+::selection {
+  background: rgba(245, 244, 242, 0.22);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   Background (soft ambient blobs)
+   ========================================================= */
+.app-bg {
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(227, 163, 110, 0.18), transparent 60%),
+    radial-gradient(900px 520px at 88% 16%, rgba(66, 171, 216, 0.14), transparent 60%),
+    radial-gradient(900px 520px at 55% 95%, rgba(46, 236, 116, 0.1), transparent 60%),
+    var(--background);
+}
+
+/* =========================================================
+   Components
+   ========================================================= */
+
+/* Glass card */
+.card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+}
+
+/* Hover lift */
+.card-hover {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--border) 70%, black 8%);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Focus ring helper */
+.focus-ring:focus {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 5px var(--ring);
+}
+
+/* Handy muted background utility if you want it */
+.muted-20 {
+  background: color-mix(in oklab, var(--muted) 20%, transparent);
 }
