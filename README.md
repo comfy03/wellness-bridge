@@ -1,16 +1,13 @@
-# 🌿 Wellness Bridge
+# Wellness Bridge
 
 Wellness Bridge is a research-grounded micro-intervention assistant that connects curated PDF sources to practical, plain-language guidance.
 
-It retrieves relevant excerpts from a local PDF knowledge base and generates structured, actionable responses — with transparent citations.
+It retrieves relevant excerpts from a local PDF knowledge base and generates structured, actionable responses, with transparent citations.
 
-> ⚠️ Educational only. Not medical advice or diagnosis.
 
----
+## Current Functionality
 
-## ✨ Current Functionality
-
-### 1️⃣ Topic Pages
+### Topic Pages
 
 Each topic (e.g., Sleep) includes:
 
@@ -27,14 +24,12 @@ Each topic (e.g., Sleep) includes:
     - Why it helps  
     - Try this  
 
----
-
-### 2️⃣ Ask Wellness Bridge (RAG-powered Q&A)
+###  Ask Wellness Bridge (RAG-powered Q&A)
 
 Users can ask questions such as:
 
 - “When should I go to sleep?”
-- “I wake up too early — what should I try?”
+- “I wake up too early,  what should I try?”
 
 The system:
 
@@ -59,9 +54,8 @@ The model is explicitly instructed to:
 - Prefer actionable steps over general advice
 - Avoid inline citation clutter
 
----
 
-## 🧠 Architecture
+## Architecture
 
 ### Retrieval-Augmented Generation (RAG)
 
@@ -89,19 +83,16 @@ Grounded, cited response
 
 ---
 
-## 🔍 Transparency Model
+## Transparency Model
 
 Each response includes:
 
 - A clean “Sources” section (filename + page)
 - Optional debug citation scores (development mode only)
-- Local-only document storage
+- Local-only document storage, hot to expand to external medical databases.
 
-No external medical databases are queried.
 
----
-
-## 🎨 Design Philosophy
+## Design Philosophy
 
 The UI aims to feel:
 
@@ -112,9 +103,7 @@ The UI aims to feel:
 
 The goal is to bridge research and behavior change without cognitive overload.
 
----
-
-## 🚧 Current Limitations
+## Current Limitations
 
 - Small PDF corpus
 - No user memory or personalization
@@ -123,9 +112,7 @@ The goal is to bridge research and behavior change without cognitive overload.
 - Chunk ranking based only on similarity score
 - No strength-of-evidence tagging
 
----
-
-## 🌱 Future Vision
+## Future Vision
 
 ### Short-Term
 
@@ -152,9 +139,8 @@ The goal is to bridge research and behavior change without cognitive overload.
 - Multi-turn conversational grounding
 - Risk flagging + escalation pathways (non-diagnostic)
 
----
 
-## 🛡 Ethical Position
+## Ethical Position
 
 - Educational only  
 - No diagnosis  
@@ -162,16 +148,12 @@ The goal is to bridge research and behavior change without cognitive overload.
 - Grounded strictly in provided PDFs  
 - Transparent sourcing  
 
-Wellness Bridge is designed to reduce friction between research and real-life behavior — not replace clinicians.
+Wellness Bridge is designed to reduce friction between research and real-life behavior but not replace clinicians.
 
----
-
-## 🧘 Why This Exists
+## Why This Exists
 
 There is often a gap between:
 
-- Research papers  
-and  
-- What someone can realistically do tonight.
+- Research papers, and what someone can realistically do tonight especially withing underrepresented and overlooked communities. 
 
 Wellness Bridge attempts to narrow that gap.
